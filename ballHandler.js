@@ -77,7 +77,7 @@ function createBall(recordIdx = -1) {
     if(recorded) {
         x = ballRecords[recordIdx].startX;
     } else {
-        x += (xsize / 2) + randomBallStartXCoord();
+      x += xBallStart + randomBallStartXCoord();
     }
 
     // create ball particle emitter
@@ -137,7 +137,7 @@ function createBall(recordIdx = -1) {
 // ball has hit the bottom of the triangle - reset it to the top
 function recycleBall(ball) {
     ball.y = startY;
-    ball.x = (xsize / 2) + randomBallStartXCoord();
+  ball.x = xBallStart + randomBallStartXCoord();
     ball.startX = ball.x;
     ball.dx = 0;
     ball.dy = 0;     

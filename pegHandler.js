@@ -28,9 +28,9 @@ function addPeg(id, x,y) {
 // create whole peg board
 function createPegBoard() {
 
-    let x = xsize / 2;
-    let y = 94;
-    let step = 73;
+  let x = xBallStart;
+    let y = 124;
+    let step = 54;
     let pegCount = 1;
 
     // row 1
@@ -39,9 +39,9 @@ function createPegBoard() {
     // rows 2+
     let startX = (xsize - step) / 2;
         
-    for(let i = 2; i <=5; ++i) {
+    for(let i = 2; i <=8; ++i) {
         x = startX;
-        y += step*cos30;
+        y += step*cos45;
         for(let j = 0; j < i; ++j) {
             pegCount++;
             addPeg(pegCount, x,y);

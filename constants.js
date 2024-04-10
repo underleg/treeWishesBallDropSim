@@ -2,19 +2,19 @@
 const xsize = 541;
 const ysize = 1001;
 
-const cupXCoords = [87, 160, 233, 307, 379, 454];
+const xBallStart = xsize / 2 - 2; // centre vertical for tree
+
+const cupXCoords = [37, 98, 159, 220, 281, 342, 403, 464, 525];
 
 const radius = 16;
 const ball_sprite_radius = 22;
-const collision_radius = 22;
+const collision_radius = 16;
 
 
-const collisionDiameterSquared = 22 * 22;
-const cos30 = 0.86602540378;
+const collisionDiameterSquared = 16 * 16;
+const cos45 = 0.707;
 
 const startY = -10;
-
-const ballGap = 1;
 
 const wallXSize = 2;
 

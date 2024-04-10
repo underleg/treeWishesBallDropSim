@@ -24,21 +24,21 @@ function createPrizeCounters() {
         fontSize: 14,
         fontStyle: 'italic',
         fontWeight: 'bold',
-        fill: ['#7FFF7F'], 
+        fill: ['#FF0000'], 
     });
 
-    let x = (xsize / 2) - (60 * 2.5);
+  let x = xBallStart - (50 * 4.5);
 
-    for(let i = 0; i < 6; ++i) {
+    for(let i = 0; i < 9; ++i) {
 
         let cntrText = new PIXI.Text(0, style);
         cntrText.x = x;
-        cntrText.y = 735;
+        cntrText.y = 735 + 10;
         app.stage.addChild(cntrText);
 
         prizeCounts[prizeCounts.length] = { id: (i+1), text: cntrText, count: 0, qualifiedCount: 0 };
 
-        x += 60;
+        x += 50;
     }
 }
 
@@ -96,24 +96,33 @@ function countPrize(ball) {
 
     let idx = 0;
 
-    if(ball.x < pegs[10].x) {
+    if(ball.x < pegs[28].x) {
         idx = 0;
         prizeX = cupXCoords[0];
-    } else if(ball.x < pegs[11].x) {
+    } else if(ball.x < pegs[29].x) {
         idx = 1;
-        prizeX = cupXCoords[1];
-    }else if(ball.x < pegs[12].x) {
+    }else if(ball.x < pegs[30].x) {
         idx = 2;
         prizeX = cupXCoords[2];
-    }else if(ball.x < pegs[13].x) {
+    }else if(ball.x < pegs[31].x) {
         idx = 3;
         prizeX = cupXCoords[3];
-    }else if(ball.x < pegs[14].x) {
+    }else if(ball.x < pegs[32].x) {
         idx = 4;
         prizeX = cupXCoords[4];
-    } else {
+    } else if (ball.x < pegs[33].x) {
         prizeX = cupXCoords[5];
         idx = 5;
+    } else if (ball.x < pegs[34].x) {
+      prizeX = cupXCoords[6];
+      idx = 6;
+    } else if (ball.x < pegs[35].x) {
+      prizeX = cupXCoords[7];
+      idx = 7;
+    }
+    else {
+      idx = 8;
+      prizeX = cupXCoords[8];
     }
 
     
