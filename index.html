@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  
+    <head>
+        <meta charset="UTF-8" />
+        <title>Peg Triangle</title>
+    </head>
+
+    <body bgcolor="#FFFFFF">
+
+      <form>
+        <input type="button" value="Prize 0" onclick="forcePrize(0);" />
+        <input type="button" value="Prize 1" onclick="forcePrize(1);" />
+        <input type="button" value="Prize 2" onclick="forcePrize(2);" />
+        <input type="button" value="Prize 3" onclick="forcePrize(3);" />
+        <input type="button" value="Prize 4" onclick="forcePrize(4);" />
+        <input type="button" value="Prize 5" onclick="forcePrize(5);" />
+
+        <input type="button" value="Prize Stream" onclick="forcePrizeStream();" />
+      </form>
+
+      <!-- <script src="https://pixijs.download/release/pixi.js"></script> -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.10/pixi.min.js"></script>
+      <script src="particle-emitter.js"></script>
+      <script src="particles.js"></script>
+      <script src="ballRecords.js"></script>
+      <script src="constants.js"></script>
+      <script src="globals.js"></script>
+      <script src="functions.js"></script>
+      <script src="ballHandler.js"></script>
+      <script src="pegHandler.js"></script>
+      <script src="prizeHandler.js"></script>
+      <script src="main.js"></script>
+
+      <form>
+        <input type="button" value="Drop 1" onclick="createAllBalls(1);" />
+        <input type="button" value="Drop 3" onclick="createAllBalls(3);" />
+        <input type="button" value="Drop 10" onclick="createAllBalls(10);" />
+        <input type="button" value="Drop 100" onclick="createAllBalls(100);" />
+        <input type="button" value="Clear" onclick="clearBalls();" />
+        <input type="button" value="Write" onclick="writeRecord();" />
+
+        <input type="button" value="KillParticles" onclick="killParticles();" />
+      </form>
+
+
+
+      <form>
+        <label for="ballLimit">Ball Limit:</label>
+        <input type="number" id="ballLimit" value=1000000 name="ballLimit"> <br>
+      </form>
+      <form>
+        <label for="gravity">Gravity:</label>
+        <input type="number" id="gravity" value=0.14 name="gravity">  <br>
+      </form>
+      <form>
+        <label for="x_dampener">X Damp:</label>
+        <input type="number" id="x_dampener" value=0.5 name="x_dampener">  <br>
+      </form>
+      <form>
+        <label for="y_dampener">Y Damp:</label>
+        <input type="number" id="y_dampener" value=0.55 name="y_dampener">  <br>
+      </form>
+      <form>
+        <label for="dxLim">Dx Min Limit:</label>
+        <input type="number" id="dxLim" value=0.04 name="dxLim">  <br>
+      </form>
+
+
+    </body>
+</html>
+
+
