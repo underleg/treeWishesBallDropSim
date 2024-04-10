@@ -21,7 +21,7 @@ function createPrizeCounters() {
     const style = new PIXI.TextStyle({
         fontFamily: 'Arial',
         align: "center",
-        fontSize: 14,
+        fontSize: 10,
         fontStyle: 'italic',
         fontWeight: 'bold',
         fill: ['#FF0000'], 
@@ -146,7 +146,7 @@ function countPrize(ball) {
     if (!ball.disqualified) {
         prizeCounts[idx].qualifiedCount++;
     }
-    prizeCounts[idx].text.text = prizeCounts[idx].qualifiedCount + " / " + prizeCounts[idx].count;
+    prizeCounts[idx].text.text = prizeCounts[idx].qualifiedCount + " /\n" + prizeCounts[idx].count;
 
 
     

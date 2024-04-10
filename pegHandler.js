@@ -102,12 +102,16 @@ function incrementCounts(ball, peg) {
     } else {
         ball.repeatBounceCount++;
 
+      let numDisqualifyingBounces = document.getElementById("numBounces").value;
+
         // disqualify if bal bounes on same peg more than 5 times
-        if (ball.repeatBounceCount > 5) {
+      if (ball.repeatBounceCount > numDisqualifyingBounces) {
             ball.disqualified = true;
         }
     }
 }
+
+
 
 function killParticles() {
     doParticles = false;

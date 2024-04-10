@@ -3,27 +3,6 @@
 
 
 
-function incrementCounts(ball, peg) {
-    if(peg.id != ball.lastPegHit) { // don't count double bounces
-        ball.lastPegHit = peg.id;
-        ball.count++;
-        
-        peg.count++;
-        
-        ball.bounceRecord[ball.bounceRecord.length] = peg.id;
-        
-       
-    } else {
-        ball.repeatBounceCount++;
-
-        // disqualify if bal bounes on same peg more than 5 times
-        if (ball.repeatBounceCount > 5) {
-            ball.disqualified = true;
-        }
-    }
-}
-
-
 function writeRecord() {
 
     // record settings in comments

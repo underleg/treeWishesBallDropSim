@@ -18,7 +18,7 @@ const startY = -10;
 
 const wallXSize = 2;
 
-const  randomsDirectionsPerBall = 10;
+const randomsDirectionsPerBall = 10;
 
 const fontStyle = new PIXI.TextStyle({
     fontFamily: 'Arial',
