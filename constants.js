@@ -2,13 +2,13 @@
 const xsize = 541;
 const ysize = 1001;
 
-const xBallStart = xsize / 2 - 2; // centre vertical for tree
+const xBallStart = xsize / 2 - 1; // centre vertical for tree
 
 const cupXCoords = [37, 98, 159, 220, 281, 342, 403, 464, 525];
 
 const radius = 16;
 const ball_sprite_radius = 22;
-const collision_radius = 16;
+const collision_radius = 15;
 
 
 const collisionDiameterSquared = 16 * 16;

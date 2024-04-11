@@ -100,14 +100,15 @@ function countPrize(ball) {
         idx = 0;
         prizeX = cupXCoords[0];
     } else if(ball.x < pegs[29].x) {
-        idx = 1;
-    }else if(ball.x < pegs[30].x) {
+      idx = 1;
+      prizeX = cupXCoords[1];
+    } else if(ball.x < pegs[30].x) {
         idx = 2;
         prizeX = cupXCoords[2];
-    }else if(ball.x < pegs[31].x) {
+    } else if(ball.x < pegs[31].x) {
         idx = 3;
         prizeX = cupXCoords[3];
-    }else if(ball.x < pegs[32].x) {
+    } else if(ball.x < pegs[32].x) {
         idx = 4;
         prizeX = cupXCoords[4];
     } else if (ball.x < pegs[33].x) {

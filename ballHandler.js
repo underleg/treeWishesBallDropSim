@@ -100,21 +100,6 @@ function createBall(recordIdx = -1) {
     s.x = x - ball_sprite_radius;
     s.y = y - ball_sprite_radius;
 
-    // create a list of random bounce direction -1 (left) or 1 (right)
-    let rndms = [];
-    if(recorded) {
-        rndms = ballRecords[recordIdx].randomDirections;    
-    } else {
-        for(i = 0; i < randomsDirectionsPerBall; ++i) {
-            if(Math.random() < 0.5) {
-                rndms[i] = -1;
-            } else 
-            {
-                rndms[i] = 1;
-            }
-        }
-    }
-
     // Ball structure
     let res = { recordIdx: recordIdx,
                 disqualified: false,
@@ -124,8 +109,6 @@ function createBall(recordIdx = -1) {
                 dx:0,dy:0,
                 sprite: s, 
                 name: name, 
-                randomDirections: rndms, 
-                randomIdx: 0,
                 count: 0,
                 lastPegHit: -1,
                 bounceRecord: [],
@@ -142,7 +125,6 @@ function recycleBall(ball) {
     ball.dx = 0;
     ball.dy = 0;     
     ball.count = 0;
-    ball.randomIdx = 0;
     ball.lastPegHit = -1;
     ball.bounceRecord = [];
     ball.repeatBounceCount = 0;
@@ -176,28 +158,34 @@ function bounceAway(ball, peg, timeDelta) {
     pb.x /= mag;
     pb.y /= mag;
 
-    mag = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
-    if (mag < 0.1) {
-        ball.dx = -pb.x * mag * 2.1;
-        ball.dy = -pb.y * mag * 2.1;
+  mag = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
+
+    // cap speed
+    if (mag > 20.0) {
+      mag = 20.0;
     }
-    if (mag < 1) {
-        ball.dx = -pb.x * mag * 1.1;
-        ball.dy = -pb.y * mag * 1.1;
+    if (mag < 0.5) {
+      ball.dx = -pb.x  * 2.1;
+      ball.dy = -pb.y  * 2.1;
     }
     else {
-        let x_dampener = document.getElementById("x_dampener").value;
-        let y_dampener = document.getElementById("y_dampener").value;
-        ball.dx = -pb.x * mag * x_dampener;
-        ball.dy = -pb.y * mag * y_dampener;
-    }
+      var ang = Math.atan2(pb.y, pb.x);
 
+      let xBounce = document.getElementById("xbounce").value;
+      let yBounce = document.getElementById("ybounce").value;
+
+      let ax = xBounce * mag * Math.cos(ang);
+      let ay = yBounce * mag * Math.sin(ang);
+
+      ball.dx -= ax;
+      ball.dy -= ay;
+    }
     let dxLim = document.getElementById("dxLim").value;
 
     // make sure there's x movement
     if (ball.dx > -dxLim && ball.dx < dxLim) {
 
-        if (getRandomDirection(ball) == -1) {
+      if (ball.dx < 0.0) {
             ball.dx = -dxLim;
         } else {
             ball.dx = dxLim;
@@ -224,16 +212,6 @@ function randomBallStartXCoord() {
     // either -2.0 to -1.0 or 1.0 to 2.0
 
     return res;
-}
-
-
-function getRandomDirection(ball) {
-    if (ball.randomDirections.length > ball.randomIdx) {
-        let res = ball.randomDirections[ball.randomIdx];
-        ball.randomIdx = (ball.randomIdx % randomsDirectionsPerBall);
-        return res;
-    }
-    else return -1;
 }
 
 function areBallAndPegColliding(peg, ball) {
