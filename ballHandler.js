@@ -119,15 +119,17 @@ function createBall(recordIdx = -1) {
 
 // ball has hit the bottom of the triangle - reset it to the top
 function recycleBall(ball) {
-    ball.y = startY;
-  ball.x = xBallStart + randomBallStartXCoord();
+  ball.y = startY;
+  
+    ball.x = xBallStart + randomBallStartXCoord();
     ball.startX = ball.x;
     ball.dx = 0;
     ball.dy = 0;     
     ball.count = 0;
     ball.lastPegHit = -1;
     ball.bounceRecord = [];
-    ball.repeatBounceCount = 0;
+  ball.repeatBounceCount = 0;
+  ball.disqualified = false;
 
     resetPegs();
 
